@@ -6,4 +6,4 @@ const route = createRouter();
 route.post("/", signIn);
 route.post("/signup", signUp);
 
-export {route as userRoute};
+export {route as authRoute};
