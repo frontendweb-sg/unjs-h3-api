@@ -13,7 +13,7 @@ export interface User {
 	token?: string;
 	expireToken?: string;
 }
-
+export interface UserDoc extends Document<User>, User {}
 const schema = new Schema(
 	{
 		name: {type: String, required: true},
@@ -48,4 +48,4 @@ schema.pre("save", function cb(next) {
 });
 
 export const User =
-	mongoose.models[USER_TABLE] || mongoose.model(USER_TABLE, schema);
+	mongoose.models[USER_TABLE] || mongoose.model<UserDoc>(USER_TABLE, schema);

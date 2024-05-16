@@ -17,6 +17,7 @@
 		"@types/bcryptjs": "^2.4.6",
 		"@types/jsonwebtoken": "^9.0.6",
 		"bcryptjs": "^2.4.3",
+		"dotenv": "^16.4.5",
 		"h3": "^1.11.1",
 		"jsonwebtoken": "^9.0.2",
 		"mongoose": "^8.3.5",

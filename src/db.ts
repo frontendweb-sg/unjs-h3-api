@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 
 export const connectDb = async () => {
 	try {
-		await mongoose.connect("mongodb://127.0.0.1:27017/h3-learn");
+		await mongoose.connect(process.env.MONGODB_URI);
+		console.log("instance", mongoose.connection.listeners.length);
 		console.log("Mongoose connected!");
 	} catch (error) {
 		throw createError({

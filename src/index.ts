@@ -1,7 +1,12 @@
+import {config} from "dotenv";
+config({path: ".env"});
 import {createApp, defineEventHandler} from "h3";
 import {authRoute} from "./routes/auth";
+import {connectDb} from "./db";
 
 const app = createApp();
+
+connectDb();
 
 // middleware
 app.use(
