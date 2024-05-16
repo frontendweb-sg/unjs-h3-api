@@ -67,7 +67,6 @@ export const signIn = defineEventHandler(async (event) => {
 				status: 400,
 				message: "User already existed,please register with other email",
 			});
-
 		return user;
 	} catch (error) {
 		throw createError({

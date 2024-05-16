@@ -9,6 +9,7 @@ app.use(
 		console.log("I am middleware");
 	}),
 );
+
 // route
 app.use("/api/auth", authRoute.handler);
 // export app
