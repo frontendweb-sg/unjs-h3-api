@@ -1,0 +1,30 @@
+{
+	"name": "unjs-h3-api",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"start": "npx --yes listhen -w --open ./src/index.ts",
+		"prepare": "husky"
+	},
+	"lint-staged": {
+		"**/*": "prettier --write --ignore-unknown"
+	},
+	"keywords": [],
+	"author": "rsystems-8601",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"@types/bcryptjs": "^2.4.6",
+		"@types/jsonwebtoken": "^9.0.6",
+		"bcryptjs": "^2.4.3",
+		"h3": "^1.11.1",
+		"jsonwebtoken": "^9.0.2",
+		"mongoose": "^8.3.5",
+		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"husky": "^9.0.11",
+		"lint-staged": "^15.2.2",
+		"prettier": "3.2.5"
+	}
+}
