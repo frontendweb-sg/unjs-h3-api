@@ -315,27 +315,42 @@ const formData = await readMultipartFormData(event);
 // },
 // ];
 });
-readRawBody(event, encoding)
-Reads body of the request and returns encoded raw string (default), or Buffer if encoding is falsy.
-Example:
 
-export default defineEventHandler(async (event) => {
-const body = await readRawBody(event, "utf-8");
-});
-readValidatedBody(event, validate)
-Tries to read the request body via readBody, then uses the provided validation function and either throws a validation error or returns the result.
-You can use a simple function to validate the body or use a library like zod to define a schema.
-Example:
+- `readRawBody(event, encoding)`
 
-export default defineEventHandler(async (event) => {
-const body = await readValidatedBody(event, (body) => {
-return typeof body === "object" && body !== null;
-});
-});
-Example:
+  Reads body of the request and returns encoded raw string (default), or Buffer if encoding is falsy.
 
-import { z } from "zod";
-export default defineEventHandler(async (event) => {
-const objectSchema = z.object();
-const body = await readValidatedBody(event, objectSchema.safeParse);
-});
+  `Example:`
+
+  ```ts
+  export default defineEventHandler(async (event) => {
+  	const body = await readRawBody(event, "utf-8");
+  });
+  ```
+
+- `readValidatedBody(event, validate)`
+
+  Tries to read the request body via `readBody`, then uses the provided validation function and either throws a validation error or returns the result.
+
+  You can use a simple function to validate the body or use a library like zod
+  to define a schema.
+
+  `Example:`
+
+  ```ts
+  export default defineEventHandler(async (event) => {
+  	const body = await readValidatedBody(event, (body) => {
+  		return typeof body === "object" && body !== null;
+  	});
+  });
+  ```
+
+  `Example:`
+
+  ```ts
+  import {z} from "zod";
+  export default defineEventHandler(async (event) => {
+  	const objectSchema = z.object();
+  	const body = await readValidatedBody(event, objectSchema.safeParse);
+  });
+  ```
