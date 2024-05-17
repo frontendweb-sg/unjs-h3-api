@@ -52,6 +52,7 @@ export const signUp = defineEventHandler(async (event) => {
 
 export const signIn = defineEventHandler(async (event) => {
 	try {
+		console.log("user", event.context.user);
 		const body = await readValidatedBody(event, (item) =>
 			signinValidation.safeParse(item),
 		);

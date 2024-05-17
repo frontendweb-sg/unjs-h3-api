@@ -13,12 +13,20 @@ const app = createApp({
 app.use(
 	defineLazyEventHandler(async () => {
 		await connectDb();
-		console.log(storage, "storage");
-		return defineEventHandler((event) => {
+
+		let token = await storage.hasItem("users:token");
+		if (!token) {
+			await storage.setItem("users:token", "hello");
+		}
+		return defineEventHandler(async (event) => {
 			const clientAddress = event.context.clientAddress;
 			const params = event.context.params;
 			const matchedRoute = event.context.matchedRoute;
 			const sessions = event.context.sessions;
+
+			if (token) {
+				event.context.user = await storage.getItem("users:token");
+			}
 			console.log(
 				"I am middleware",
 				clientAddress,
